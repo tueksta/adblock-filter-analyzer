@@ -660,7 +660,7 @@ export class AdBlockSyntaxLine {
 				let s = this.syntax[key];
 				s = this._escapeHTML(s);
 				s = s.replace(/ /g, "&nbsp;");
-				richText += '<span class="' + classes + '">' + s.replace(allSelectorsRegEx, function(match) {
+				richText += '<span class="' + classes + '">' + s.replace(this.allSelectorsRegEx, function(match) {
 					return '<span class="selectorMarker">' + match + '</span>';
 				}); + '</span>';
 			}
