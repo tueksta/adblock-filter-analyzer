@@ -107,6 +107,7 @@ body {
 }
 
 .selectorMarker {
+	pointer-events: none;
 	font-weight: bolder;
 }
 
