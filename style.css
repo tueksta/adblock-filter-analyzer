@@ -146,7 +146,6 @@ body {
 .whitespaceBack {
 	color: rgba(127,127,127,.33);
     content: "•";
-    position: absolute;
 }
 
 /* Errors */
