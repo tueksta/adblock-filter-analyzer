@@ -51,6 +51,10 @@ body {
 	font-weight: bolder;
 }
 
+
+/* WHITE SPACE */
+
+
 .space {
 	pointer-events: none;
     display: inline-block;
@@ -61,6 +65,23 @@ body {
     color: rgba(127,127,127,.33);
     content: "¬";
 }
+
+/* WARNING SIGN */
+
+#rich-text {
+    position: relative;
+}
+
+#rich-text .line .error::after {
+    content: "⛔";
+    background-color: white;
+    position: absolute;
+    right: 8px;
+}
+#rich-text .line .error:not(:first-of-type)::after {
+    display:none;
+}
+
 
 /* COLORS */
 
