@@ -213,8 +213,8 @@ export class AdBlockSyntaxLine {
 	
 	/** dice syntax string up into categories: comment !, exception @@, domain, option $, selectorException #@#, selector ##, abpExtendedSelector #?#, actionoperator :style(), abpSnippet #$#, etc. */
 	_categorizeSyntax() {
-		this._lookForWhitespace();
 		this._lookForComments();
+		this._lookForWhitespace();
 		this._lookForHosts();
 		this._lookForDomains();
 		// lookForActionOperators needs to come before lookForSelectors, even though actionOperators appear after selectors in the string.
