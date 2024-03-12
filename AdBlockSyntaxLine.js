@@ -667,6 +667,9 @@ _lookForWhitespace() {
 				s = s.replace(this.allSelectorMarkersRegEx, function(match) {
 					return '<span class="selectorMarker">' + match + '</span>';
 				});
+				if (s.syntax[key].startsWith('whitespace')) {
+			        s = s.replace(/&nbsp;/g, '<span class="cm-space" cm-text=" "></span>');
+    			}
 				richText += '<span class="' + classes + '">' + s + '</span>';
 			}
 		}
