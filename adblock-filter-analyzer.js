@@ -73,6 +73,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		if ( targetElem.nodeName === "SPAN" ) {
 			let myClasses = targetElem.className.split(" ");
 			for ( let myClass of myClasses ) {
+				if (myClass == 'line' ) continue;
 				let descriptionText = tooltips[myClass];
 				descriptionText = `<h2><span class="` + myClass + `">` + myClass + `</span></h2>` + descriptionText;
 				definition.innerHTML = descriptionText;
