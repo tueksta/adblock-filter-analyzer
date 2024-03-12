@@ -47,7 +47,7 @@ body {
 /* COLORS */
 
 .space::before {
-	color: rgba(127,127,127,.33);
+	filter: brightness(0.9) saturate(75%);
 	content: "•";
 }
 
