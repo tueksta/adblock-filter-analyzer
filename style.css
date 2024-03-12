@@ -46,6 +46,10 @@ body {
 
 /* COLORS */
 
+.space::before {
+	color: rgba(127,127,127,.33);
+	content: "•";
+}
 
 
 /* PRE PARSING DIRECTIVES */
