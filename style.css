@@ -47,7 +47,7 @@ body {
     display: inline-block;
     background: radial-gradient(circle, currentColor, rgba(0,0,0,0) 2px);
 }
-.line:not(:last-child)>span:after {
+.line:not(:last-child):after {
     pointer-events: none;
     color: rgba(127,127,127,.33);
     content: "¬";
