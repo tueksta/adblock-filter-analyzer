@@ -22,7 +22,7 @@
 		let viewer = document.getElementById('viewer');
 		
 		for ( let key in tooltips ) {
-			if key == 'line' continue;
+			if (key == 'line') continue;
 			let descriptionText = `<h2><span class="` + key + `">` + key + `</span></h2>` + tooltips[key];
 			descriptionText = `<div style="border:1px solid black; width: 600px;">` + descriptionText + "</div>";
 			viewer.innerHTML += descriptionText;
