@@ -60,7 +60,7 @@ body {
 }
 
 .domain {
-	color: ##974900;
+	color: #974900;
 }
 .exception {
 	background-color: #D4D4D4;
@@ -83,6 +83,10 @@ body {
 .selector,
 .agStyling {
 	background-color: #DCDCAA;
+}
+
+.selectorMarker {
+	font-weight: bolder;
 }
 
 .selectorException,
