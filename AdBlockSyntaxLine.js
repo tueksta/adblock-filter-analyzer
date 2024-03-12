@@ -663,7 +663,7 @@ export class AdBlockSyntaxLine {
 				s = s.replace(this.allSelectorsRegEx, function(match) {
 					return '<span class="selectorMarker">' + match + '</span>';
 				});
-				richText += '<span class="' + classes + '">' + s2 + '</span>';
+				richText += '<span class="' + classes + '">' + s + '</span>';
 			}
 		}
 		return richText;
