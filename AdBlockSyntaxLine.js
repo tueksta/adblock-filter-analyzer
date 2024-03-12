@@ -213,7 +213,7 @@ export class AdBlockSyntaxLine {
 	
 	/** dice syntax string up into categories: comment !, exception @@, domain, option $, selectorException #@#, selector ##, abpExtendedSelector #?#, actionoperator :style(), abpSnippet #$#, etc. */
 	_categorizeSyntax() {
-		comment = this._lookForComments();
+		var comment = this._lookForComments();
 		this._lookForWhitespace();
 		if (comment)
 			return;
