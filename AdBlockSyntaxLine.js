@@ -419,17 +419,10 @@ export class AdBlockSyntaxLine {
 		
 		// htmlFilter ##^
 		if ( this.toParse.startsWith('##^') ) {
-	    	// Extract the marker
-		    let marker = '##^';
-    		// Remove the marker from the start of the string to get the remainder
-		    let remainder = this.toParse.slice(3);
-
-    		// Store the marker and remainder separately in the syntax object
-    		this.syntax['htmlFilter'] = remainder;
-	    	this.syntax['htmlFilterMarker'] = marker;
+			this.syntax['htmlFilter'] = this.toParse;
 			return;
 		}
-
+		
 		// htmlFilterException #@#^
 		if ( this.toParse.startsWith('#@#^') ) {
 			this.syntax['htmlFilterException'] = this.toParse;
@@ -667,7 +660,9 @@ export class AdBlockSyntaxLine {
 				let s = this.syntax[key];
 				s = this._escapeHTML(s);
 				s = s.replace(/ /g, "&nbsp;");
-				richText += '<span class="' + classes + '">' + s + '</span>';
+				richText += '<span class="' + htmlContent.replace(allSelectorsRegEx, function(match) {
+					return '<span class="selectorMarker">' + match + '</span>';
+				}); + '">' + s + '</span>';
 			}
 		}
 		return richText;
