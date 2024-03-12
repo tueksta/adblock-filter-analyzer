@@ -251,26 +251,26 @@ export class AdBlockSyntaxLine {
 		
 	_lookForComments() {
 		// uboPreParsingDirective !#
-		if ( this.toParse.search(/!#[a-zA-Z0-9]/) !== -1 ) {
+		if ( this.toParse.search(/!#[a-zA-Z0-9]+\s*/) !== -1 ) {
 			this.syntax['uboPreParsingDirective'] = this.toParse;
 			throw "not sure";
 		}
 		
 		// agHint !+
-		if ( this.toParse.startsWith('!+') ) {
+	    if (this.toParse.search(/^!\+\s*/) !== -1) {
 			this.syntax['agHint'] = this.toParse;
 			throw "not sure";
 		}
 		
 		// comment ! [
-		if ( this.string.startsWith('!') || this.string.startsWith('[') ) {
+	    if (this.toParse.search(/^[\[!]\s*/) !== -1) {
 			this.syntax['comment'] = this.toParse;
 			throw true;
 		}
 		
 		// comment # (but not ## or ### or #@#+js(
 		if (
-			this.string.startsWith('#') &&
+			this.toParse.search(/^#\s*/) !== -1 &&
 			! this.string.startsWith('##') &&
 			! this.string.startsWith('###') &&
 			! this.string.startsWith('#@#+js')
