@@ -249,5 +249,8 @@ export let tooltips = {
 		<li>@function-library - </li>
 		<li>@tip - </li>
 		</ul>
+		`,
+	'line': // linebreak
+		`
 		`
 };

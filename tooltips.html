@@ -24,9 +24,7 @@
 		for ( let key in tooltips ) {
 			let descriptionText = `<h2><span class="` + key + `">` + key + `</span></h2>` + tooltips[key];
 			descriptionText = `<div style="border:1px solid black; width: 600px;">` + descriptionText + "</div>";
-			if (key !== 'line') {
-				viewer.innerHTML += descriptionText;
-			}
+			viewer.innerHTML += descriptionText;
 		}
 	</script>
 </body>
