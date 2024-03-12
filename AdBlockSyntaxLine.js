@@ -668,7 +668,7 @@ export class AdBlockSyntaxLine {
 				richText += '<span class="' + classes + '">' + s + '</span>';
 			}
 		}
-		return richText;
+		return "<span class='line'>" + richText + "</span>";
 	}
 	
 	_countRegExMatches(str, regExPattern) {
