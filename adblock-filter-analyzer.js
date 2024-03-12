@@ -14,7 +14,8 @@ window.addEventListener('DOMContentLoaded', (e) => {
 	let lineCount = document.getElementById('line-count');
 	let definition = document.getElementById('definition');
 	let filterList = document.getElementById('filter-list');
-	
+    let timer = document.getElementById('timer');
+
 	/** Do some HTML escape, convert tabs to &nbsp, convert enters to <br>. Prevents bugs when pasting and importing from file into richTextBox. */
 	function processPastedText(text) {
 		text = text.replace(/</g, "&lt;");
@@ -26,6 +27,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 	}
 	
 	richText.addEventListener('input', function(e) {
+		const startTime = performance.now();
 		// In theory, we should need some escapeHTML's and unescapeHTML's around here. In actual testing, anything being written into the <textarea> by JS didn't need to be escaped.
 		let offset = Cursor.getCurrentCursorPosition(richText);
 		let block = new AdBlockSyntaxBlock();
@@ -33,6 +35,9 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		json.value = block.getJSON();
 		richText.innerHTML = block.getRichText();
 		Cursor.setCurrentCursorPosition(offset, richText);
+		const endTime = performance.now();
+        const processTime = endTime - startTime;
+        timer.textContent = processTime.toFixed(2); // Display process time in milliseconds with two decimal places
 		lineCount.innerHTML = block.getLineCount();
 		richText.focus(); // blinks the cursor
 	});

@@ -252,5 +252,6 @@ export let tooltips = {
 		`,
 	'line': // linebreak
 		`
+		a linebreak
 		`
 };
