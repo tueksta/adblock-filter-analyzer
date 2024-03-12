@@ -18,6 +18,7 @@ body {
 
 #rich-text {
 	font-family: 'Source Code Pro', monospace;
+	padding: 1rem 0 0 1rem;
 	width: 65%;
 	height: 425px;
 	border: 1px solid black;
@@ -30,7 +31,9 @@ body {
 }
 
 #definition {
-	width: 35%;
+	padding: 1rem 0 0 1rem;
+	margin-left: 1em;
+	width: 32%;
 	height: 425px;
 	border: 1px solid black;
 	overflow: scroll;
@@ -50,49 +53,109 @@ body {
 }
 
 /* DOMAINS */
-.hosts {background-color: black; color: white;}
+.hosts {
+	background-color: black;
+	color: white;
+}
 
-.domain {background-color: #CE9178}
-.exception {background-color: #D4D4D4}
+.domain {
+	color: ##974900;
+}
+.exception {
+	background-color: #D4D4D4;
+}
 
-.domainRegEx {background-color: navy; color: white;}
-.exceptionRegEx {background-color: yellow}
+.domainRegEx {
+	background-color: navy;
+	color: white;
+}
+.exceptionRegEx {
+	background-color: yellow;
+}
 
 /* SELECTORS */
-.option {background-color: lightblue}
+.option {
+	background-color: lightblue;
+}
 
-.selector {background-color: #DCDCAA}
-.agStyling {background-color: #DCDCAA}
+/* General Styling */
+.selector,
+.agStyling {
+	background-color: #DCDCAA;
+}
 
-.selectorException {background-color: limegreen}
-.agStylingException {background-color: limegreen}
+.selectorException,
+.agStylingException {
+	background-color: limegreen;
+}
 
-.htmlFilter {background-color: orange}
+.htmlFilter {
+	background-color: orange;
+}
 
-.htmlFilterException {background-color: blue; color: white;}
+.htmlFilterException {
+	background-color: blue;
+	color: white;
+}
 
-.abpExtendedSelector {background-color: rgba(112, 55, 16, 0.808); color: white;}
-.agExtendedSelector {background-color: rgba(112, 55, 16, 0.808); color: white;}
-.agAdvancedStyling {background-color: rgba(112, 55, 16, 0.808); color: white;}
+.abpExtendedSelector,
+.agExtendedSelector,
+.agAdvancedStyling {
+	background-color: rgba(112, 55, 16, 0.808);
+	color: white;
+}
 
-.agExtendedSelectorException {background-color: maroon; color: white;}
-.agAdvancedStylingException {background-color: maroon; color: white;}
+.agExtendedSelectorException,
+.agAdvancedStylingException {
+	background-color: maroon;
+	color: white;
+}
 
-/* ACTION OPERATORS */
-.actionOperator {background-color: gold}
-.agActionOperator {background-color: gold}
+/* Action Operators */
+.actionOperator,
+.agActionOperator {
+	background-color: gold;
+}
 
-/* SCRIPTS */
-.uboScriptlet {background-color: pink}
-.abpSnippet {background-color: pink}
-.agJSRule {background-color: pink}
+/* Scripts */
+.uboScriptlet,
+.abpSnippet,
+.agJSRule {
+	background-color: pink;
+}
 
-.uboScriptletException {background-color: aqua}
-.agJSException {background-color: aqua}
+.uboScriptletException,
+.agJSException {
+	background-color: aqua;
+}
 
-/* WHITESPACE */
-.whitespaceFront {background-color: #569CD6; color: white;}
-.whitespaceBack {background-color: #569CD6; color: white;}
+/* Whitespace */
+.whitespaceFront,
+.whitespaceBack {
+	background-color: #569CD6;
+	color: white;
+}
 
-/* ERRORS */
-.error {background-color: #d22 !important; color: white;}
+/* Errors */
+.error {
+	background-color: #d22 !important;
+	color: white;
+}
+
+/*
+ubo colors
+	--sf-comment-ink: var(--ink-3);
+    --sf-def-ink: #3c3aff;
+    --sf-directive-ink: var(--ink-1);
+    --sf-error-ink: #ff8981;
+    --sf-error-surface: #ff898133;
+    --sf-keyword-ink: #9b00ca;
+    --sf-notice-ink: var(--ink-4);
+    --sf-readonly-ink: var(--ink-3);
+    --sf-tag-ink: #006e2e 
+    --sf-unicode-ink: var(--ink-1);
+    --sf-value-ink: #974900 
+    --sf-variable-ink: var(--ink-1);
+    --sf-warning-ink: #e49d00;
+    --sf-warning-surface: #e49d0033;
+*/
