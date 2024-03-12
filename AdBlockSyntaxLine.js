@@ -44,6 +44,7 @@ export class AdBlockSyntaxLine {
 	};
 	// Below is used in a RegEx that isolates the domain from the selector. If you add a selector-ish symbol to the list above, you MUST add it here too
 	allSelectorsRegEx = /\$|##|#@#|##\^|#@#\^|#\?#|##\+js\(|#@#\+js\(|#\$#|#%#|#@%#|#\?#|#@\?#|#\$#|#@\$#|#\$\?#|#@\$\?#/;
+	allSelectorMarkersRegEx = /\$|##|#@#(?:\+js)?|##\^|#@#\^(?:\+js)?|#\?#|##\+js\(|#@#\+js\(|#\$#|#%#|#@%#|#\?#|#@\?#|#\$#|#@\$#|#\$\?#|#@\$\?#/;
 	allSelectorsExceptOptionRegEx = /##|#@#|##\^|#@#\^|#\?#|##\+js\(|#@#\+js\(|#\$#|#%#|#@%#|#\?#|#@\?#|#\$#|#@\$#|#\$\?#|#@\$\?#/;
 	// all selectors except $ and ##. Those two had too many false positives
 	allSelectorsExceptTwoRegEx = /#@#|##\^|#@#\^|#\?#|##\+js\(|#@#\+js\(|#\$#|#%#|#@%#|#\?#|#@\?#|#\$#|#@\$#|#\$\?#|#@\$\?#/;
@@ -660,7 +661,7 @@ export class AdBlockSyntaxLine {
 				let s = this.syntax[key];
 				s = this._escapeHTML(s);
 				s = s.replace(/ /g, "&nbsp;");
-				s = s.replace(this.allSelectorsRegEx, function(match) {
+				s = s.replace(this.allSelectorMarkersRegEx, function(match) {
 					return '<span class="selectorMarker">' + match + '</span>';
 				});
 				richText += '<span class="' + classes + '">' + s + '</span>';
