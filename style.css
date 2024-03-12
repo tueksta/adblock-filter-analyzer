@@ -17,6 +17,7 @@ body {
 }
 
 #rich-text {
+	font-family: 'Source Code Pro', monospace;
 	width: 65%;
 	height: 425px;
 	border: 1px solid black;
@@ -36,14 +37,17 @@ body {
 	resize: both;
 }
 
-/* color ideas: https://encycolorpedia.com/websafe */
-
 /* PRE PARSING DIRECTIVES */
-.uboPreParsingDirective {background-color: #C586AB}
-.agHint {background-color: #C586AB}
+.agHint,
+.uboPreParsingDirective {
+	background-color: #6A9955
+}
 
 /* COMMENTS */
-.comment {background-color: #6A9955}
+.comment {
+	color: #b7bcc0;
+	background-color: rgba(16,17,18,.05);
+}
 
 /* DOMAINS */
 .hosts {background-color: black; color: white;}
@@ -91,4 +95,4 @@ body {
 .whitespaceBack {background-color: #569CD6; color: white;}
 
 /* ERRORS */
-.error {background-color: red !important; color: black;}
+.error {background-color: #d22 !important; color: white;}
