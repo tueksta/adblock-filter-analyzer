@@ -42,6 +42,10 @@ body {
 	line-height: 1.3;
 }
 
+#timer {
+	font-family: 'Source Code Pro', monospace;
+	font-weight: bolder;
+}
 
 .space {
 	pointer-events: none;

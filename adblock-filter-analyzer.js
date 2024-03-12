@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		Cursor.setCurrentCursorPosition(offset, richText);
 		const endTime = performance.now();
         const processTime = endTime - startTime;
-        timer.textContent = processTime.toFixed(2); // Display process time in milliseconds with two decimal places
+        timer.textContent = processTime.toFixed(2) + `ms`; // Display process time in milliseconds with two decimal places
 		lineCount.innerHTML = block.getLineCount();
 		richText.focus(); // blinks the cursor
 	});
