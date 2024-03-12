@@ -213,10 +213,8 @@ export class AdBlockSyntaxLine {
 	
 	/** dice syntax string up into categories: comment !, exception @@, domain, option $, selectorException #@#, selector ##, abpExtendedSelector #?#, actionoperator :style(), abpSnippet #$#, etc. */
 	_categorizeSyntax() {
-		var comment = this._lookForComments();
+		this._lookForComments();
 		this._lookForWhitespace();
-		if (comment)
-			return;
 		this._lookForHosts();
 		this._lookForDomains();
 		// lookForActionOperators needs to come before lookForSelectors, even though actionOperators appear after selectors in the string.
@@ -664,9 +662,12 @@ export class AdBlockSyntaxLine {
 				s = this._escapeHTML(s);
 				s = s.replace(/ /g, "<span class='space'> </span>");
 				s = s.replace(/\n/g, '¬\n');
-				s = s.replace(this.allSelectorMarkersRegEx, function(match) {
-					return '<span class="selectorMarker">' + match + '</span>';
-				});
+				if (key != 'comment') {
+					s = s.replace(this.allSelectorMarkersRegEx, function(match) {
+						return '<span class="selectorMarker">' + match + '</span>';
+
+					});
+				}
 				richText += '<span class="' + classes + '">' + s + '</span>';
 			}
 		}
