@@ -43,14 +43,13 @@ body {
 }
 
 
-
-/* COLORS */
-
-.space::before {
+.space {
     display: inline-block;
-    background: radial-gradient(circle, #cc0, rgba(192,192,0,0) 2px);
+    background: radial-gradient(circle, #b7bcc0, rgba(192,192,0,0) 2px);
 }
 
+
+/* COLORS */
 
 /* PRE PARSING DIRECTIVES */
 .agHint,
@@ -148,8 +147,7 @@ body {
 /* Whitespace */
 .whitespaceFront,
 .whitespaceBack {
-	color: rgba(127,127,127,.33);
-    content: "•";
+	background-color: lightskyblue;
 }
 
 /* Errors */
