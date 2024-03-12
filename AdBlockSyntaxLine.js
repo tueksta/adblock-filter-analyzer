@@ -44,7 +44,7 @@ export class AdBlockSyntaxLine {
 	};
 	// Below is used in a RegEx that isolates the domain from the selector. If you add a selector-ish symbol to the list above, you MUST add it here too
 	allSelectorsRegEx = /\$|##|#@#|##\^|#@#\^|#\?#|##\+js\(|#@#\+js\(|#\$#|#%#|#@%#|#\?#|#@\?#|#\$#|#@\$#|#\$\?#|#@\$\?#/;
-	allSelectorMarkersRegEx = /\$|##|#@#(?:\+js)?|##\^|#@#\^(?:\+js)?|#\?#|##\+js\(|#@#\+js\(|#\$#|#%#|#@%#|#\?#|#@\?#|#\$#|#@\$#|#\$\?#|#@\$\?#/;
+	allSelectorMarkersRegEx = /\$|##(?:\+js)?|#@#(?:\+js)?|##\^|#@#\^(?:\+js)?|#\?#|#\$#|#%#|#@%#|#\?#|#@\?#|#\$#|#@\$#|#\$\?#|#@\$\?#/;
 	allSelectorsExceptOptionRegEx = /##|#@#|##\^|#@#\^|#\?#|##\+js\(|#@#\+js\(|#\$#|#%#|#@%#|#\?#|#@\?#|#\$#|#@\$#|#\$\?#|#@\$\?#/;
 	// all selectors except $ and ##. Those two had too many false positives
 	allSelectorsExceptTwoRegEx = /#@#|##\^|#@#\^|#\?#|##\+js\(|#@#\+js\(|#\$#|#%#|#@%#|#\?#|#@\?#|#\$#|#@\$#|#\$\?#|#@\$\?#/;
