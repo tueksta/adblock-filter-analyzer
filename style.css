@@ -42,7 +42,9 @@ body {
 	line-height: 1.3;
 }
 
-#timer {
+#line-count,
+#timer,
+#error-count {
 	font-family: 'Source Code Pro', monospace;
 	font-weight: bolder;
 }
