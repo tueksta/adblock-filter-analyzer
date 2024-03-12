@@ -45,7 +45,7 @@ body {
 
 .space {
     display: inline-block;
-    background: radial-gradient(circle, #b7bcc0, rgba(192,192,0,0) 2px);
+    background: radial-gradient(circle, currentColor, rgba(0,0,0,0) 2px);
 }
 
 
