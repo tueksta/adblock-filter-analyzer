@@ -147,7 +147,7 @@ body {
 /* Whitespace */
 .whitespaceFront,
 .whitespaceBack {
-	background-color: lightskyblue;
+	background-color: rgba(16,17,18,.05);
 }
 
 /* Errors */
