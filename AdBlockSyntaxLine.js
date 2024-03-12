@@ -231,8 +231,10 @@ _lookForWhitespace() {
         let strPos = this.toParse.indexOf(trimmed);
 
         // Extract whitespaceFront and whitespaceBack
-        this.syntax['whitespaceFront'] = this.toParse.slice(0, strPos);
-        this.syntax['whitespaceBack'] = this.toParse.slice(strPos + trimmed.length);
+        this.syntax['whitespace'] = {
+            front: this.toParse.slice(0, strPos),
+            back: this.toParse.slice(strPos + trimmed.length)
+        };
 
         // Update the toParse string
         this.toParse = trimmed;
@@ -667,9 +669,6 @@ _lookForWhitespace() {
 				s = s.replace(this.allSelectorMarkersRegEx, function(match) {
 					return '<span class="selectorMarker">' + match + '</span>';
 				});
-				if (s.syntax[key].startsWith('whitespace')) {
-			        s = s.replace(/&nbsp;/g, '<span class="cm-space" cm-text=" "></span>');
-    			}
 				richText += '<span class="' + classes + '">' + s + '</span>';
 			}
 		}
