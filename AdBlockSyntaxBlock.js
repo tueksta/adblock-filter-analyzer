@@ -61,6 +61,10 @@ export class AdBlockSyntaxBlock {
 		return this.lineCount;
 	}
 	
+	getErrorCount() {
+		return this.countFalse;
+	}
+	
 	_parse(s) {
 		this.string = s;
 		let lines = s.split("\n");

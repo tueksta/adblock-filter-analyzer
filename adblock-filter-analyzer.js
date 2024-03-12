@@ -15,6 +15,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 	let definition = document.getElementById('definition');
 	let filterList = document.getElementById('filter-list');
     let timer = document.getElementById('timer');
+    let errorCount = document.getElementById('error-count');
 
 	/** Do some HTML escape, convert tabs to &nbsp, convert enters to <br>. Prevents bugs when pasting and importing from file into richTextBox. */
 	function processPastedText(text) {
@@ -39,6 +40,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
         const processTime = endTime - startTime;
         timer.textContent = processTime.toFixed(2) + `ms`; // Display process time in milliseconds with two decimal places
 		lineCount.innerHTML = block.getLineCount();
+		errorCount.textContent = block.getErrorCount();
 		richText.focus(); // blinks the cursor
 	});
 	
