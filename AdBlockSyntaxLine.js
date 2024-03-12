@@ -11,7 +11,7 @@ export class AdBlockSyntaxLine {
 	string = "";
 	toParse = "";
 	syntax = {
-		'whitespace': '',
+		'whitespaceFront': '',
 		'uboPreParsingDirective': '', // !#
 		'agHint': '', // !+
 		'comment': '', // !
@@ -222,25 +222,21 @@ export class AdBlockSyntaxLine {
 		this._lookForSelectors();
 	}
 	
-_lookForWhitespace() {
-    // Trim whitespace from both ends of the toParse string
-    let trimmed = this.toParse.trim();
-
-    // Check if trimming resulted in a change
-    if (this.toParse !== trimmed) {
-        let strPos = this.toParse.indexOf(trimmed);
-
-        // Extract whitespaceFront and whitespaceBack
-        this.syntax['whitespace'] = {
-            front: this.toParse.slice(0, strPos),
-            back: this.toParse.slice(strPos + trimmed.length)
-        };
-
-        // Update the toParse string
-        this.toParse = trimmed;
-    }
-}
-
+	_lookForWhitespace() {
+		// TODO: refactor using .trimLeft() and .trimRight()
+		let trimmed = this.toParse.trim();
+		if ( this.toParse !== trimmed ) {
+			let strPos = this.toParse.indexOf(trimmed);
+			this.syntax['whitespaceFront'] = this.toParse.slice(0, strPos);
+			
+			let whitespaceFrontLength = this.syntax['whitespaceFront'].length;
+			let trimmedLength = trimmed.length;
+			this.syntax['whitespaceBack'] = this.toParse.slice(whitespaceFrontLength + trimmedLength);
+			
+			this.toParse = trimmed;
+		}
+	}
+	
 	_lookForHosts() {
 		// hosts file syntax - usually starts in 127.0.0.1 or 0.0.0.0
 		if (
