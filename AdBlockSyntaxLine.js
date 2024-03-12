@@ -11,7 +11,7 @@ export class AdBlockSyntaxLine {
 	string = "";
 	toParse = "";
 	syntax = {
-		'whitespaceFront': '',
+		'whitespace': '',
 		'uboPreParsingDirective': '', // !#
 		'agHint': '', // !+
 		'comment': '', // !
