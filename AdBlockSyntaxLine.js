@@ -234,10 +234,6 @@ _lookForWhitespace() {
         this.syntax['whitespaceFront'] = this.toParse.slice(0, strPos);
         this.syntax['whitespaceBack'] = this.toParse.slice(strPos + trimmed.length);
 
-        // Replace space characters with <span class="cm-space" cm-text=" "></span>
-        this.syntax['whitespaceFront'] = this.syntax['whitespaceFront'].replace(/ /g, '<span class="cm-space" cm-text=" "></span>');
-        this.syntax['whitespaceBack'] = this.syntax['whitespaceBack'].replace(/ /g, '<span class="cm-space" cm-text=" "></span>');
-
         // Update the toParse string
         this.toParse = trimmed;
     }
