@@ -243,7 +243,7 @@ export class AdBlockSyntaxLine {
 			this.toParse.startsWith('127.0.0.1 ') ||
 			this.toParse.startsWith('0.0.0.0 ') ||
 			this.toParse.startsWith('255.255.255.255 ') ||
-			this.toParse.startsWith('::1 ')
+			this.toParse.startsWith('::1 ') ||
 			this.toParse.startsWith(':: ')
 		) {
 			this.syntax['hosts'] = this.toParse;
