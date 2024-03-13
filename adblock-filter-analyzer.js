@@ -27,7 +27,21 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		return text;
 	}
 	
-	richText.addEventListener('input', function(e) {
+	function debounce(func, wait) {
+    let timeout;
+
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+	}
+
+	richText.addEventListener('input', debounce(function(e) {
 		const startTime = performance.now();
 		// In theory, we should need some escapeHTML's and unescapeHTML's around here. In actual testing, anything being written into the <textarea> by JS didn't need to be escaped.
 		let offset = Cursor.getCurrentCursorPosition(richText);
@@ -42,7 +56,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		lineCount.innerHTML = block.getLineCount();
 		errorCount.textContent = block.getErrorCount();
 		richText.focus(); // blinks the cursor
-	});
+	}, 500)); // 500ms delay
 	
 	// When pasting into rich text editor, force plain text. Do not allow rich text or HTML. For example, the default copy/paste from VS Code is rich text. Foreign formatting messes up our syntax highlighting.
 	richText.addEventListener("paste", function(e) {
