@@ -250,8 +250,18 @@ export let tooltips = {
 		<li>@tip - </li>
 		</ul>
 		`,
-	'line': // linebreak
-		`
-		a linebreak
-		`
+	'hosts':
+        `
+        <ul>
+        <li>@syntax - <span class="code">hosts</span></li>
+        <li>@name - Hosts File</li>
+        <li>@description - </li>
+        <li>@example - <span class="code">127.0.0.1 localhost</span></li>
+        <li>@documentation - <a href="https://en.wikipedia.org/wiki/Hosts_(file)">Wikipedia</a></li>
+        <li>@plugin-variations - </li>
+        <li>@special-characters - </li>
+        <li>@function-library - </li>
+        <li>@tip - </li>
+        </ul>
+        `,
 };
