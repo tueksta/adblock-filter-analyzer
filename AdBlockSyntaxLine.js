@@ -237,19 +237,20 @@ export class AdBlockSyntaxLine {
 		}
 	}
 	
-_lookForHosts() {
-    // Regular expression for matching IPv4 addresses
-    const ipv4Pattern = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?) /;
-    
-    // Regular expression for matching IPv6 addresses
-    const ipv6Pattern = '/^(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)?(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))$/iD';
-
-    if (ipv4Pattern.test(this.toParse) || ipv6Pattern.test(this.toParse)) {
-        this.syntax['hosts'] = this.toParse;
-        throw "not sure";
-    }
-}
-
+	_lookForHosts() {
+		// hosts file syntax - usually starts in 127.0.0.1 or 0.0.0.0
+		if (
+			this.toParse.startsWith('127.0.0.1 ') ||
+			this.toParse.startsWith('0.0.0.0 ') ||
+			this.toParse.startsWith('255.255.255.255 ') ||
+			this.toParse.startsWith('::1 ')
+			this.toParse.startsWith(':: ')
+		) {
+			this.syntax['hosts'] = this.toParse;
+			throw "not sure";
+		}
+	}
+		
 	_lookForComments() {
 		// uboPreParsingDirective !#
 		if ( this.toParse.search(/!#[a-zA-Z0-9]+\s*/) !== -1 ) {
