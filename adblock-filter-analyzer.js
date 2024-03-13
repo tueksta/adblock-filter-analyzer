@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		lineCount.innerHTML = block.getLineCount();
 		errorCount.textContent = block.getErrorCount();
 		richText.focus(); // blinks the cursor
-	}, 500)); // 500ms delay
+	}, 1000)); // 500ms delay
 	
 	// When pasting into rich text editor, force plain text. Do not allow rich text or HTML. For example, the default copy/paste from VS Code is rich text. Foreign formatting messes up our syntax highlighting.
 	richText.addEventListener("paste", function(e) {
