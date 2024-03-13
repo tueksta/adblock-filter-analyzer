@@ -63,33 +63,35 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		filterList.value = "";
 	});
 	
-	/** Provides functionality for hovering over a highlight and getting the syntax description */
-	function addDescription(e) {
-		e = e || window.event;
-		
-		var targetElem = e.target || e.srcElement;
-		
-		// tags must be capitalized for some reason
-		if ( targetElem.nodeName === "SPAN" ) {
-			let myClasses = targetElem.className.split(" ");
-			for ( let myClass of myClasses ) {
-				if (myClass == 'line' ) continue;
-				if (myClass === "error") {
-                	// If the class is 'error', use the error message from the data attribute
-                	let errorMessage = targetElem.getAttribute('data-error-message');
-                	descriptionText = errorMessage ? `<h2>Error</h2>${errorMessage}` : "Error without a message";
-                	break; // Assuming you want to prioritize error messages
+function addDescription(e) {
+    e = e || window.event;
+
+    var targetElem = e.target || e.srcElement;
+
+    // Tags must be capitalized for some reason
+    if (targetElem.nodeName === "SPAN") {
+        let myClasses = targetElem.className.split(" ");
+        let descriptionText = ""; // Initialize descriptionText outside the loop
+
+        // First, check if 'error' class is present and prioritize it
+        if (myClasses.includes("error")) {
+            let errorMessage = targetElem.getAttribute('data-error-message');
+            descriptionText = errorMessage ? `<h2>Error</h2>${errorMessage}` : "Error without a message";
+        } else {
+            // If no 'error' class, proceed with other classes
+            for (let myClass of myClasses) {
+                if (myClass == 'line') continue; // Skip 'line' class
+                if (tooltips[myClass]) { // Check if tooltip exists for the class
+                    descriptionText = `<h2><span class="${myClass}">${myClass}</span></h2>` + tooltips[myClass];
+                    break; // Exit after the first relevant class is found
                 }
-				let descriptionText = tooltips[myClass];
-				descriptionText = `<h2><span class="` + myClass + `">` + myClass + `</span></h2>` + descriptionText;
-				definition.innerHTML = descriptionText;
-				
-				// make sure error overwrites everything else
-				if ( myClass === "error" ) break;
-			}
-		}
-	}
-	
+            }
+        }
+
+        definition.innerHTML = descriptionText;
+    }
+}
+
 	richText.addEventListener("mouseover", addDescription, false);
 	richText.addEventListener("mousewheel", addDescription, false);
 	
