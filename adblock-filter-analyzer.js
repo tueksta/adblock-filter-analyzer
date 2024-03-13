@@ -76,7 +76,7 @@ function addDescription(e) {
         // First, check if 'error' class is present and prioritize it
         if (myClasses.includes("error")) {
             let errorMessage = targetElem.getAttribute('data-error-message');
-            descriptionText = errorMessage ? `<h2>Error</h2>${errorMessage}` : "Error without a message";
+            descriptionText = errorMessage ? `<span class="error">⛔ error</span>${errorMessage}` : "Error without a message";
         } else {
             // If no 'error' class, proceed with other classes
             for (let myClass of myClasses) {
