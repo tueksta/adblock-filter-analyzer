@@ -74,6 +74,12 @@ window.addEventListener('DOMContentLoaded', (e) => {
 			let myClasses = targetElem.className.split(" ");
 			for ( let myClass of myClasses ) {
 				if (myClass == 'line' ) continue;
+				if (myClass === "error") {
+                	// If the class is 'error', use the error message from the data attribute
+                	let errorMessage = targetElem.getAttribute('data-error-message');
+                	descriptionText = errorMessage ? `<h2>Error</h2>${errorMessage}` : "Error without a message";
+                	break; // Assuming you want to prioritize error messages
+                }
 				let descriptionText = tooltips[myClass];
 				descriptionText = `<h2><span class="` + myClass + `">` + myClass + `</span></h2>` + descriptionText;
 				definition.innerHTML = descriptionText;

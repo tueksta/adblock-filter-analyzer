@@ -654,9 +654,12 @@ export class AdBlockSyntaxLine {
 		let classes = "";
 		for ( let key in this.syntax ) {
 			classes = key;
+			let additionalAttributes = "";
 			if ( ! this.isValid || this.isValid === "mismatch" ) {
 				classes += " error";
-			}
+ 		        let escapedErrorHint = this._escapeHTML(this.errorHint);
+            	additionalAttributes += ` data-error-message="${escapedErrorHint}"`;
+ 			}
 			if ( this.syntax[key] ) {
 				let s = this.syntax[key];
 				s = this._escapeHTML(s);
@@ -668,10 +671,10 @@ export class AdBlockSyntaxLine {
 
 					});
 				}
-				richText += '<span class="' + classes + '">' + s + '</span>';
+	            richText += `<span class="${classes}"${additionalAttributes}>${s}</span>`;
 			}
 		}
-		return "<span class='line'>" + richText + "</span>";
+		return `<span class='line'>${richText}</span>`;
 	}
 	
 	_countRegExMatches(str, regExPattern) {
