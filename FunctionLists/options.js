@@ -58,6 +58,10 @@ export let optionsWithoutEquals = [
 	'websocket',
 	'xhr',
 	'xmlhttprequest',
+    'header',
+    'permissions',
+    'strict1p',
+    'strict3p',
 ];
 
 export let optionsWithEquals = [
@@ -70,4 +74,8 @@ export let optionsWithEquals = [
 	'replace', // adguard
 	'rewrite', // = [a-z\-:]
 	'sitekey', // = [a-z]
+    'empty', // Assuming this covers $redirect=empty
+    'mp4', // Assuming this covers $redirect=noopmp4-1s
+    'method', // Assuming usage with equals, based on context
+    'to', // Assuming usage with equals, based on context
 ];
