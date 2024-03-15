@@ -77,7 +77,7 @@ export class AdBlockSyntaxBlock {
 				this._incrementCounters(line);
 			}
 			// NOTE: even though contenteditable="true" uses <div></div> for enter, we must convert it to <br>, because a blank innerHTML <div></div> does not render as enter
-			this.richText += "<span class='line'></span><br>";
+			this.richText += "<span class='line2'></span><br>";
 		}
 		this.richText = this.richText.slice(0, this.richText.length - 4);
 	}

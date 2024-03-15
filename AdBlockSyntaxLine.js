@@ -662,7 +662,7 @@ export class AdBlockSyntaxLine {
 	            richText += `<span class="${classes}"${additionalAttributes}>${s}</span>`;
 			}
 		}
-		return richText;
+		return `<span class='line1'>${richText}</span>`;
 	}
 	
 	_countRegExMatches(str, regExPattern) {
