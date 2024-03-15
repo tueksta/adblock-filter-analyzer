@@ -134,18 +134,15 @@ function addDescription(e) {
 });
 
 document.getElementById('scrollToError').addEventListener('click', function() {
-    let textarea = document.getElementById('rich-text');
-    let spans = textarea.querySelectorAll('.error');
-    let currentScrollPos = textarea.scrollTop;
-    let currentCursorPos = textarea.selectionStart;
-    
+    let spans = richText.querySelectorAll('.error');
+    let currentCursorPos = Cursor.getCurrentCursorPosition(richText);
     let nextSpanIndex = -1;
+    
+    // Find the index of the next span after the current cursor position
     for (let i = 0; i < spans.length; i++) {
         let spanTopOffset = spans[i].offsetTop;
         let spanBottomOffset = spans[i].offsetTop + spans[i].offsetHeight;
-        if ((spanTopOffset >= currentScrollPos && spanTopOffset <= textarea.offsetHeight + currentScrollPos) ||
-            (spanBottomOffset >= currentScrollPos && spanBottomOffset <= textarea.offsetHeight + currentScrollPos) ||
-            (spanTopOffset < currentScrollPos && spanBottomOffset > currentScrollPos)) {
+        if (spanTopOffset >= currentCursorPos || spanBottomOffset >= currentCursorPos) {
             nextSpanIndex = (i + 1) % spans.length; // Circular increment
             break;
         }
@@ -153,11 +150,11 @@ document.getElementById('scrollToError').addEventListener('click', function() {
     
     if (nextSpanIndex !== -1) {
         let nextSpan = spans[nextSpanIndex];
+        // Set the cursor position to the beginning of the next span
+        Cursor.setCurrentCursorPosition(nextSpan.textContent.length, textarea);
+        
         // Scroll the textarea to the next span
         nextSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        // Optionally, move the cursor to the beginning of the textarea
-        textarea.focus();
     } else {
         alert('No spans found!');
     }
