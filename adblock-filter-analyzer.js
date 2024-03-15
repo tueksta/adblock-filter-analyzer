@@ -142,7 +142,6 @@ document.getElementById('scrollToError').addEventListener('click', function() {
         
     // Scroll the textarea to the next span
     // nextSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
 
     if (nextSpanIndex == errorCount) {
     	nextSpanIndex = 0;
