@@ -138,7 +138,7 @@ function addDescription(e) {
 	    let currentCursorPos = Cursor.getCurrentCursorPosition(richText);
 	    let nextSpanIndex = 0;
 	    
-	    nextSpan = spans[nextSpanIndex];
+	    let nextSpan = spans[nextSpanIndex];
 		Cursor.setCurrentCursorPosition(nextSpan.textContent.length, richText);
 	        
 	    // Scroll the textarea to the next span
