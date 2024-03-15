@@ -149,7 +149,7 @@ function addDescription(e) {
 
 	    nextSpanIndex++;
 
-	    if (nextSpanIndex + 1 == errorCount) {
+	    if (nextSpanIndex >= spans.length) {
 	    	nextSpanIndex = 0;
 	    }
 	});
