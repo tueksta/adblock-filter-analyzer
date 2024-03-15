@@ -74,7 +74,7 @@ body {
 
 #rich-text .line .error::after {
     content: "⛔";
-    background-color: white;
+    background-color: transparent;
     position: absolute;
     right: 8px;
 }
