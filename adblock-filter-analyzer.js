@@ -136,27 +136,16 @@ function addDescription(e) {
 document.getElementById('scrollToError').addEventListener('click', function() {
     let spans = richText.querySelectorAll('.error');
     let currentCursorPos = Cursor.getCurrentCursorPosition(richText);
-    let nextSpanIndex = -1;
-    
-    // Find the index of the next span after the current cursor position
-    for (let i = 0; i < spans.length; i++) {
-        let spanTopOffset = spans[i].offsetTop;
-        let spanBottomOffset = spans[i].offsetTop + spans[i].offsetHeight;
-        if (spanTopOffset >= currentCursorPos || spanBottomOffset >= currentCursorPos) {
-            nextSpanIndex = (i + 1) % spans.length; // Circular increment
-            break;
-        }
-    }
-    
-    if (nextSpanIndex !== -1) {
-        let nextSpan = spans[nextSpanIndex];
-        // Set the cursor position to the beginning of the next span
-        Cursor.setCurrentCursorPosition(nextSpan.textContent.length, richText);
+    let nextSpanIndex = 0;
         
-        // Scroll the textarea to the next span
-        nextSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
-        alert('No spans found!');
+	Cursor.setCurrentCursorPosition(spans[nextSpanIndex].textContent.length, richText);
+        
+    // Scroll the textarea to the next span
+    // nextSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    if (nextSpanIndex == errorCount) {
+    	nextSpanIndex = 0;
     }
 });
 
