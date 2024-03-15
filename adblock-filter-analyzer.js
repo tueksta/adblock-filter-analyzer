@@ -131,7 +131,7 @@ function addDescription(e) {
 	});
 	
 	filterList.dispatchEvent(new Event('change', { bubbles: true }));
-});
+
 
 document.getElementById('scrollToError').addEventListener('click', function() {
     let spans = richText.querySelectorAll('.error');
@@ -158,4 +158,6 @@ document.getElementById('scrollToError').addEventListener('click', function() {
     } else {
         alert('No spans found!');
     }
+});
+
 });
