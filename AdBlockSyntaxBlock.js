@@ -80,6 +80,7 @@ export class AdBlockSyntaxBlock {
 			this.richText += "<span class='line'></span><br>";
 		}
 		this.richText = this.richText.slice(0, this.richText.length - 4);
+	}
 			
 	_incrementCounters(line) {
 		if ( line.syntax['comment'] ) {
