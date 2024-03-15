@@ -66,6 +66,7 @@ export class AdBlockSyntaxBlock {
 		this.lineCount = lines.length - 1; // I'm not sure why array has an extra line, but it does, subtract 1 line from count
 		let counter = 0;
 		for ( let lineString of lines) {
+			this.richText += "<span class='line'>";
 			if ( lineString !== '' ) {
 				let line = new AdBlockSyntaxLine(lineString);
 				if ( ( line.isValid === false || line.isValid === "mismatch" ) ) {
@@ -76,8 +77,9 @@ export class AdBlockSyntaxBlock {
 				// increment the true/false counters
 				this._incrementCounters(line);
 			}
+			this.richText += "</span><br>";
 			// NOTE: even though contenteditable="true" uses <div></div> for enter, we must convert it to <br>, because a blank innerHTML <div></div> does not render as enter
-			this.richText += "<span class='line2'></span><br>";
+			</span><br>";
 		}
 		this.richText = this.richText.slice(0, this.richText.length - 4);
 	}
