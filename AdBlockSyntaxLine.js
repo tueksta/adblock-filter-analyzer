@@ -636,20 +636,6 @@ export class AdBlockSyntaxLine {
 		}
 	}
 	
-	/** Gets a string with a JSON representation of the syntax categories. Also prints isValid and errorHint. */
-	getJSON() {
-		let s = "";
-		s += "Filter = " + this.string + "\n";
-		s += "Valid? = " + this.isValid + "\n";
-		if ( this.errorHint ) {
-			s += "Error Hint = " + this.errorHint + "\n";
-		}
-		s += JSON.stringify(this.syntax);
-		// add enters after commas
-		s = s.replace(/",/g, '",\n');
-		return s;
-	}
-	
 	/** Gets a string of the filter syntax, with HTML <span>s wrapped around each category of syntax. These <span>s will be used to highlight the text the correct color in the richTextBox. */
 	getRichText() {
 		let richText = "";
@@ -676,7 +662,7 @@ export class AdBlockSyntaxLine {
 	            richText += `<span class="${classes}"${additionalAttributes}>${s}</span>`;
 			}
 		}
-		return `<span class='line'>${richText}</span>`;
+		return richText;
 	}
 	
 	_countRegExMatches(str, regExPattern) {

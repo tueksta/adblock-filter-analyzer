@@ -8,7 +8,6 @@ import { tooltips } from './tooltips.js';
 
 // This line not optional. Content loads top to bottom. Need to wait until DOM is fully loaded.
 window.addEventListener('DOMContentLoaded', (e) => {
-	let json = document.getElementById('json');
 	let richText = document.getElementById('rich-text');
 	let clear = document.getElementById('clear');
 	let lineCount = document.getElementById('line-count');
@@ -47,7 +46,6 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		let offset = Cursor.getCurrentCursorPosition(richText);
 		let block = new AdBlockSyntaxBlock();
 		block.parseRichText(richText.innerHTML);
-		json.value = block.getJSON();
 		richText.innerHTML = block.getRichText();
 		Cursor.setCurrentCursorPosition(offset, richText);
 		const endTime = performance.now();

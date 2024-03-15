@@ -6,7 +6,6 @@ import { AdBlockSyntaxLine }  from './AdBlockSyntaxLine.js';
 
 export class AdBlockSyntaxBlock {
 	string = "";
-	json = "";
 	richText = "";
 	countTrue = 0;
 	countFalse = 0
@@ -53,10 +52,6 @@ export class AdBlockSyntaxBlock {
 		return this.richText;
 	}
 	
-	getJSON() {
-		return this.json;
-	}
-	
 	getLineCount() {
 		return this.lineCount;
 	}
@@ -73,10 +68,8 @@ export class AdBlockSyntaxBlock {
 		for ( let lineString of lines) {
 			if ( lineString !== '' ) {
 				let line = new AdBlockSyntaxLine(lineString);
-				// A large amount of JSON slows down the program. Only do JSON for first few errors.
-				if ( ( line.isValid === false || line.isValid === "mismatch" ) && counter < 25 ) {
+				if ( ( line.isValid === false || line.isValid === "mismatch" ) ) {
 					counter++;
-					this.json += line.getJSON() + "\n\n";
 				}
 				this.richText += line.getRichText();
 			
@@ -87,20 +80,7 @@ export class AdBlockSyntaxBlock {
 			this.richText += "<span class='line'></span><br>";
 		}
 		this.richText = this.richText.slice(0, this.richText.length - 4);
-		
-		// fix \n\n at end
-		if ( this.json ) {
-			this.json = this.json.slice(0, length - 2);
-		}
-		
-		this.json = this.countFalse + " errors, "
-			+ this.countMismatches + " mismatches"
-			+ "\n"
-			+ "For speed reasons, only the first few errors will be shown."
-			+ "\n\n"
-			+ this.json;
-	}
-	
+			
 	_incrementCounters(line) {
 		if ( line.syntax['comment'] ) {
 			this.countComments++;
