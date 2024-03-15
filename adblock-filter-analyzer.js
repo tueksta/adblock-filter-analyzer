@@ -106,7 +106,8 @@ function addDescription(e) {
 
 	richText.addEventListener("mouseover", addDescription, false);
 	richText.addEventListener("mousewheel", addDescription, false);
-	
+	richText.addEventListener("input", addDescription, false);
+
 	// when picking a filter list to load from the combo box
 	filterList.addEventListener("change", function(e) {
 		if ( ! filterList.value ) {
