@@ -149,7 +149,7 @@ function addDescription(e) {
 
 	    nextSpanIndex++;
 
-	    if (nextSpanIndex == errorCount) {
+	    if (nextSpanIndex + 1 == errorCount) {
 	    	nextSpanIndex = 0;
 	    }
 	});
