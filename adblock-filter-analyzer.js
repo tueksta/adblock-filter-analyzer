@@ -133,19 +133,23 @@ function addDescription(e) {
 	filterList.dispatchEvent(new Event('change', { bubbles: true }));
 
 
-document.getElementById('scrollToError').addEventListener('click', function() {
-    let spans = richText.querySelectorAll('.error');
-    let currentCursorPos = Cursor.getCurrentCursorPosition(richText);
-    let nextSpanIndex = 0;
-        
-	Cursor.setCurrentCursorPosition(spans[nextSpanIndex].textContent.length, richText);
-        
-    // Scroll the textarea to the next span
-    // nextSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	document.getElementById('scrollToError').addEventListener('click', function() {
+	    let spans = richText.querySelectorAll('.error');
+	    let currentCursorPos = Cursor.getCurrentCursorPosition(richText);
+	    let nextSpanIndex = 0;
+	    
+	    nextSpan = spans[nextSpanIndex];
+		Cursor.setCurrentCursorPosition(nextSpan.textContent.length, richText);
+	        
+	    // Scroll the textarea to the next span
+	    // nextSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	    richText.scrollTop = nextSpan.offsetTop;
 
-    if (nextSpanIndex == errorCount) {
-    	nextSpanIndex = 0;
-    }
-});
+	    nextSpanIndex++;
+
+	    if (nextSpanIndex == errorCount) {
+	    	nextSpanIndex = 0;
+	    }
+	});
 
 });
