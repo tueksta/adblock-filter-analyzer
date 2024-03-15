@@ -112,19 +112,19 @@ export class AdBlockSyntaxLine {
 	_lookForErrors() {
 		// no spaces in domains or domain regex
 		if ( this.syntax['domainRegEx'] && this.syntax['domainRegEx'].search(/ /g) !== -1 ) {
-			this.errorHint = "no spaces allowed in domains, exceptions, domainRegEx, or exceptionRegEx";
+			this.errorHint = "no spaces allowed in domainRegEx";
 			throw false;
 		}
 		if ( this.syntax['domain'] && this.syntax['domain'].search(/ /g) !== -1 ) {
-			this.errorHint = "no spaces allowed in domains, exceptions, domainRegEx, or exceptionRegEx";
+			this.errorHint = "no spaces allowed in domains";
 			throw false;
 		}
 		if ( this.syntax['exceptionRegEx'] && this.syntax['exceptionRegEx'].search(/ /g) !== -1 ) {
-			this.errorHint = "no spaces allowed in domains, exceptions, domainRegEx, or exceptionRegEx";
+			this.errorHint = "no spaces allowed in exceptionRegEx";
 			throw false;
 		}
 		if ( this.syntax['exception'] && this.syntax['exception'].search(/ /g) !== -1 ) {
-			this.errorHint = "no spaces allowed in domains, exceptions, domainRegEx, or exceptionRegEx";
+			this.errorHint = "no spaces allowed in exceptions";
 			throw false;
 		}
 		
@@ -140,14 +140,14 @@ export class AdBlockSyntaxLine {
 		// had to take out ## to fix a false positive
 		let count = this._countRegExMatches(s, this.allSelectorsExceptTwoRegEx);
 		if ( count > 1 ) {
-			this.errorHint = "selector-ish syntax $ #@# ## ##^ #@#^ #?# ##+js( #@#+js( #$# is only allowed once per filter";
+			this.errorHint = 'selector-ish syntax <span class="code">$ #@# ## ##^ #@#^ #?# ##+js( #@#+js( #$#</span> is only allowed once per filter';
 			throw false;
 		}
 		
 		// look for double actionOperators
 		count = this._countRegExMatches(s, /:style\(|:remove\(/);
 		if ( count > 1 ) {
-			this.errorHint = "actionOperators :style() :remove() are only allowed once per filter";
+			this.errorHint = 'actionOperators <span class="code">:style() :remove()</span> are only allowed once per filter';
 			throw false;
 		}
 		
@@ -159,7 +159,7 @@ export class AdBlockSyntaxLine {
 			this.syntax['exceptionRegEx']
 		);
 		if ( this.syntax['actionOperator'] && ! domainPresent ) {
-			this.errorHint = "actionOperators :style() :remove() must be used with a URL";
+			this.errorHint = 'actionOperators <span class="code">:style() :remove()</span> must be used with a URL';
 			throw false;
 		}
 		
@@ -175,7 +175,7 @@ export class AdBlockSyntaxLine {
 		);
 		let countActionOperators = this._countRegExMatches(s, /:style\(|:remove\(/);
 		if ( bannedSyntaxPresent && countActionOperators ) {
-			this.errorHint = "actionOperators :style() :remove() cannot be used with ##+js( #@#+js( #$# $";
+			this.errorHint = 'actionOperators <span class="code">:style() :remove()</span> cannot be used with ##+js( #@#+js( #$# $';
 			throw false;
 		}
 		
@@ -183,7 +183,7 @@ export class AdBlockSyntaxLine {
 		count = this._countRegExMatches(s, this.allSelectorsExceptOptionRegEx);
 		let exception = ( this.syntax['exception'] || this.syntax['exceptionRegEx'] );
 		if ( exception && count ) {
-			this.errorHint = "@@ statements may not contain selector-ish syntax $ #@# ## ##^ #@#^ #?# ##+js( #@#+js( #$# or action operators :style() :remove()"
+			this.errorHint = '<span class="code">@@</span> statements may not contain selector-ish syntax <span class="code">$ #@# ## ##^ #@#^ #?# ##+js( #@#+js( #$#</span> or action operators <span class="code">:style() :remove()</span>';
 			throw false;
 		}
 		
@@ -194,7 +194,7 @@ export class AdBlockSyntaxLine {
 			this.syntax['actionOperator']
 		);
 		if ( needsEndParenthesis && ! s.endsWith(')') ) {
-			this.errorHint = "##+js() #@#+js() :style() :remove() must end in )"
+			this.errorHint = '<span class="code">##+js() #@#+js() :style() :remove()</span> must end in )';
 			throw false;
 		}
 	}
@@ -337,7 +337,7 @@ export class AdBlockSyntaxLine {
 		
 		// exception @@ must have a domain
 		if ( this.syntax['exception'] && ! this.syntax['domain'] ) {
-			this.errorHint = "exception @@ must have a domain";
+			this.errorHint = 'exception <span class="code">@@</span> must have a domain';
 			throw false;
 		}
 		
@@ -391,7 +391,7 @@ export class AdBlockSyntaxLine {
 			
 			// per ublock documentation, example.com##+js() when js() is empty is an error
 			if ( this.syntax['uboScriptlet'] === "##+js()" ) {
-				this.errorHint = "per ublock documentation, example.com##+js() when js() is empty is an error";
+				this.errorHint = 'per ublock documentation, <span class="code">example.com##+js()</span> when <span class="code">js()</span> is empty is an error';
 				throw false;
 			}
 			
@@ -525,13 +525,13 @@ export class AdBlockSyntaxLine {
 				
 				// check optionsWithEquals list
 				if ( ! optionsWithEquals.includes(value) ) {
-					this.errorHint = 'Option "' + value + '" is not in the list of allowed optionsWithEquals. Hint: Options are case sensitive and should have no spaces.';
+					this.errorHint = 'Option <span class="code">' + value + '</span> is not in the list of allowed optionsWithEquals. Hint: Options are case sensitive and should have no spaces.';
 					throw false;
 				}
 			} else {
 				// check optionsWithoutEquals list
 				if ( ! optionsWithoutEquals.includes(value) ) {
-					this.errorHint = 'option "' + value + '" is not in the list of allowed optionsWithoutEquals. Hint: Options are case sensitive and should have no spaces.';
+					this.errorHint = 'option <span class="code">' + value + '</span> is not in the list of allowed optionsWithoutEquals. Hint: Options are case sensitive and should have no spaces.';
 					throw false;
 				}
 			}
@@ -563,7 +563,7 @@ export class AdBlockSyntaxLine {
 
 			// check whitelist
 			if ( ! abpSnippets.includes(value) ) {
-				this.errorHint = '"' + value + '" is not in the list of allowed abpSnippets';
+				this.errorHint = '<span class="code">' + value + '</span> is not in the list of allowed abpSnippets';
 				throw false;
 			}
 		}
@@ -631,7 +631,7 @@ export class AdBlockSyntaxLine {
 		if ( ! uboScriptlets.includes(trimmed) ) {
 			// I assume the scriptlet names are case sensitive, but I am not sure.
 			// ubo validator does not validate function names. Need to do thorough testing.
-			this.errorHint = 'uboScriptlet "' + trimmed + '" is not in the list of allowed uboScriptlets';
+			this.errorHint = 'uboScriptlet <span class="code">' + trimmed + '</span> is not in the list of allowed uboScriptlets';
 			throw false;
 		}
 	}

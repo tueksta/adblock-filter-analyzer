@@ -79,6 +79,7 @@ export let uboScriptlets = [
 	'no-xhr-if',
 	'acs',
 	'set-cookie',
+	'json-prune-fetch-response',
 	// ********** DEPRECATED *************
 	'csp',
 	'silent-noeval',
