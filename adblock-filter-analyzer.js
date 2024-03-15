@@ -133,10 +133,11 @@ function addDescription(e) {
 	filterList.dispatchEvent(new Event('change', { bubbles: true }));
 
 
+    let nextSpanIndex = 0;
+
 	document.getElementById('scrollToError').addEventListener('click', function() {
 	    let spans = richText.querySelectorAll('.error');
 	    let currentCursorPos = Cursor.getCurrentCursorPosition(richText);
-	    let nextSpanIndex = 0;
 	    
 	    let nextSpan = spans[nextSpanIndex];
 		Cursor.setCurrentCursorPosition(nextSpan.textContent.length, richText);
