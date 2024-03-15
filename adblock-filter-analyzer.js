@@ -132,3 +132,33 @@ function addDescription(e) {
 	
 	filterList.dispatchEvent(new Event('change', { bubbles: true }));
 });
+
+document.getElementById('scrollToError').addEventListener('click', function() {
+    let textarea = document.getElementById('rich-text');
+    let spans = textarea.querySelectorAll('.error');
+    let currentScrollPos = textarea.scrollTop;
+    let currentCursorPos = textarea.selectionStart;
+    
+    let nextSpanIndex = -1;
+    for (let i = 0; i < spans.length; i++) {
+        let spanTopOffset = spans[i].offsetTop;
+        let spanBottomOffset = spans[i].offsetTop + spans[i].offsetHeight;
+        if ((spanTopOffset >= currentScrollPos && spanTopOffset <= textarea.offsetHeight + currentScrollPos) ||
+            (spanBottomOffset >= currentScrollPos && spanBottomOffset <= textarea.offsetHeight + currentScrollPos) ||
+            (spanTopOffset < currentScrollPos && spanBottomOffset > currentScrollPos)) {
+            nextSpanIndex = (i + 1) % spans.length; // Circular increment
+            break;
+        }
+    }
+    
+    if (nextSpanIndex !== -1) {
+        let nextSpan = spans[nextSpanIndex];
+        // Scroll the textarea to the next span
+        nextSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Optionally, move the cursor to the beginning of the textarea
+        textarea.focus();
+    } else {
+        alert('No spans found!');
+    }
+});
