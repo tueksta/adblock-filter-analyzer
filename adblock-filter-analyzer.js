@@ -151,7 +151,7 @@ document.getElementById('scrollToError').addEventListener('click', function() {
     if (nextSpanIndex !== -1) {
         let nextSpan = spans[nextSpanIndex];
         // Set the cursor position to the beginning of the next span
-        Cursor.setCurrentCursorPosition(nextSpan.textContent.length, RichText);
+        Cursor.setCurrentCursorPosition(nextSpan.textContent.length, richText);
         
         // Scroll the textarea to the next span
         nextSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
