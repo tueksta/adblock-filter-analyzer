@@ -55,10 +55,10 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		errorCount.textContent = block.getErrorCount();
 		richText.focus(); // blinks the cursor
 
-		if (block.getErrorCount() === 0) {
+		if (errorCount.textContent === 0) {
 	        document.getElementById('scrollToError').style.display = 'none';
 	    } else {
-	        document.getElementById('scrollToError').style.display = 'block';
+	        document.getElementById('scrollToError').style.display = 'float';
 	    }
 
 		}, 300)); // 300ms debounce
