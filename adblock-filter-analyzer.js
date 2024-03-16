@@ -44,6 +44,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		timer.textContent = "...";
 		lineCount.innerHTML = "...";
 		errorCount.textContent = "...";
+		richText.focus(); // blinks the cursor
 		const startTime = performance.now();
 		// In theory, we should need some escapeHTML's and unescapeHTML's around here. In actual testing, anything being written into the <textarea> by JS didn't need to be escaped.
 		let offset = Cursor.getCurrentCursorPosition(richText);
