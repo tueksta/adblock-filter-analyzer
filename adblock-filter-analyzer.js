@@ -25,7 +25,17 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		text = text.replace(/\n/g, "<br>");
 		return text;
 	}
-	
+
+function updateButtonVisibility() {
+    let errorCount = parseInt(document.getElementById('error-count').textContent);
+    let scrollToErrorButton = document.getElementById('scrollToError');
+    if (errorCount > 0) {
+        scrollToErrorButton.style.display = 'inline-block';
+    } else {
+        scrollToErrorButton.style.display = 'none';
+    }
+}
+
 	function debounce(func, wait) {
     let timeout;
 
@@ -54,12 +64,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		lineCount.innerHTML = block.getLineCount();
 		errorCount.textContent = block.getErrorCount();
 		richText.focus(); // blinks the cursor
-
-		if (errorCount.textContent === 0) {
-	        document.getElementById('scrollToError').style.display = 'none';
-	    } else {
-	        document.getElementById('scrollToError').style.display = 'float';
-	    }
+		updateButtonVisibility();
 
 		}, 300)); // 300ms debounce
 		
@@ -82,6 +87,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 		lineCount.innerHTML = 0;
 		errorCount.textContent = 0;
 		filterList.value = "";
+		updateButtonVisibility();
 	});
 	
 function addDescription(e) {
