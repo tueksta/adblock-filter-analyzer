@@ -652,7 +652,6 @@ export class AdBlockSyntaxLine {
 				let s = this.syntax[key];
 				s = this._escapeHTML(s);
 				s = s.replace(/ /g, "<span class='space'> </span>");
-				s = s.replace(/\n/g, '¬\n');
 				if (key != 'comment') {
 					s = s.replace(this.allSelectorMarkersRegEx, function(match) {
 						return '<span class="selectorMarker">' + match + '</span>';
