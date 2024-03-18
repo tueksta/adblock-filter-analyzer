@@ -77,7 +77,7 @@ export class AdBlockSyntaxBlock {
 				// increment the true/false counters
 				this._incrementCounters(line);
 			}
-			this.richText += "</span><br>";
+			this.richText += "</span>";
 		}
 		this.richText = this.richText.slice(0, this.richText.length - 4);
 	}
