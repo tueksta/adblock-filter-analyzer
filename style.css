@@ -57,7 +57,6 @@ body {
 
 .space {
 	pointer-events: none;
-    display: inline-block;
     background: radial-gradient(circle, currentColor, rgba(0,0,0,0) 2px);
 }
 .line {
