@@ -125,6 +125,9 @@ function addDescription(e) {
 
 	// when picking a filter list to load from the combo box
 	filterList.addEventListener("change", function(e) {
+
+		richText.innerHTML = "<div class='loading'>Fetching filter list...</div>";
+
 		timer.textContent = "...";
 		lineCount.innerHTML = "...";
 		errorCount.textContent = "...";
@@ -134,20 +137,26 @@ function addDescription(e) {
 			return;
 		}
 		
-		let text;
-		try {
-			let xmlhttp = new XMLHttpRequest();
-			xmlhttp.open('GET', filterList.value, false);
-			xmlhttp.send();
-			text = xmlhttp.responseText;
-			
+		let xmlhttp = new XMLHttpRequest();
+		xmlhttp.open('GET', filterList.value, true);
+		xmlhttp.onload = function() {
+		if (xmlhttp.status >= 200 && xmlhttp.status < 300) {
+			// Process and display the fetched data
+			let text = xmlhttp.responseText;
 			text = processPastedText(text);
 			richText.innerHTML = text;
+		} else {
+			// Handle request errors
+			richText.innerHTML = "<div class='error'>An error occurred while fetching the filters.</div>";
+		}
 			Cursor.setCurrentCursorPosition(0, richText);
 			richText.dispatchEvent(new Event('input', { bubbles: true }));
-		} catch(DOMException) {
-			richText.innerHTML = "CORS policy error. The website we are trying to fetch these filters from is not allowing our script to access it.";
-		}
+		};
+		xmlhttp.onerror = function() {
+		// Handle network errors
+			richText.innerHTML = "<div class='error'>Network error. Unable to fetch the filters.</div>";
+		};
+		xmlhttp.send();
 	});
 	
 	filterList.dispatchEvent(new Event('change', { bubbles: true }));
