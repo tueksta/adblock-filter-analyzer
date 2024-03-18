@@ -126,7 +126,7 @@ function addDescription(e) {
 	// when picking a filter list to load from the combo box
 	filterList.addEventListener("change", function(e) {
 
-		richText.innerHTML = "<div class='loading'></div>";
+		richText.innerHTML = "<span class='loading'></span>";
 
 		timer.textContent = "...";
 		lineCount.innerHTML = "...";
@@ -147,14 +147,14 @@ function addDescription(e) {
 			richText.innerHTML = text;
 		} else {
 			// Handle request errors
-			richText.innerHTML = "<div class='error'>An error occurred while fetching the filters.</div>";
+			richText.innerHTML = '<span class="line"><span class="error">An error occurred while fetching the filters.</span></span>';
 		}
 			Cursor.setCurrentCursorPosition(0, richText);
 			richText.dispatchEvent(new Event('input', { bubbles: true }));
 		};
 		xmlhttp.onerror = function() {
 		// Handle network errors
-			richText.innerHTML = "<div class='error'>Network error. Unable to fetch the filters.</div>";
+			richText.innerHTML = '<span class="line"><span class="error">Network error. Unable to fetch the filters.</span></span>';
 		};
 		xmlhttp.send();
 	});
