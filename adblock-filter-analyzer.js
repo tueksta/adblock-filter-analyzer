@@ -126,7 +126,7 @@ function addDescription(e) {
 	// when picking a filter list to load from the combo box
 	filterList.addEventListener("change", function(e) {
 
-		richText.innerHTML = "<div class='loading'>Fetching filter list...</div>";
+		richText.innerHTML = "<div class='loading'></div>";
 
 		timer.textContent = "...";
 		lineCount.innerHTML = "...";
